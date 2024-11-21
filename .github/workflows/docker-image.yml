@@ -15,10 +15,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set Image tag
+      run: |
+        echo "IMAGE_TAG=$(date +%s)" >> $GITHUB_ENV
+    
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: |
-        echo "IMAGE_TAG=$(date +%s)" >> $GITHUB_ENV
-        docker build . --file Dockerfile --tag ghcr.io/kissmarcell132/AzureWebappTest:$IMAGE_TAG
+        docker build . --file Dockerfile --tag ghcr.io/kissmarcell132/azurewebapptest:$IMAGE_TAG
         docker login ghcr.io -u kissmarcell132 -p ${{secrets.GHCR_TOKEN}}
-        docker push ghcr.io/kissmarcell132/AzureWebappTest:$IMAGE_TAG
+        docker push ghcr.io/kissmarcell132/azurewebapptest:$IMAGE_TAG
