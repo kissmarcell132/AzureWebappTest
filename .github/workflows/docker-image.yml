@@ -24,4 +24,4 @@ jobs:
       run: |
         docker build . --file Dockerfile --tag ghcr.io/kissmarcell132/azurewebapptest:$IMAGE_TAG --tag ghcr.io/kissmarcell132/azurewebapptest:latest 
         docker login ghcr.io -u kissmarcell132 -p ${{secrets.GHCR_TOKEN}}
-        docker push ghcr.io/kissmarcell132/azurewebapptest:$IMAGE_TAG push ghcr.io/kissmarcell132/azurewebapptest:latest
+        docker push ghcr.io/kissmarcell132/azurewebapptest:$IMAGE_TAG ghcr.io/kissmarcell132/azurewebapptest:latest
